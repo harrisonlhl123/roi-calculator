@@ -12,6 +12,55 @@
   <body>
     <div id="main">Hello from index.html. Something went wrong</div>
     <!-- <div id="canvas"></div> -->
+    
+    <section id="asset-allocation" class="pie-chart">
+      <!-- pie chart breaking down asset allocation -->
+    </section>
+
+    <section id="deposits-interests" class="pie-chart">
+      <!-- pie chart breaking down deposits and interests earned -->
+    </section>
+
+    <section class="bar-graph">
+      <!-- bar graph for calculating stocks -->
+      <h3>Let's calculate your potential return!</h3>
+
+      <form id="roiForm">
+
+        <label>Initial Deposit:
+          <input type="number" id="initialDeposit" required>
+        </label>
+        <br>
+        <label>Yearly Deposit:
+          <input type="number" id="yearlyDeposit" required>
+        </label>
+        <br>
+        <label>Desired Returns(%):
+          <input type="number" id="desiredReturns" required>
+        </label>
+        <br>
+        <label>Years Invested:
+          <input type="number" id="yearsInvested" required>
+        </label>
+        <br>
+        <input type="submit" value="Calculate Your Returns">
+
+        <div id="resultForStocks">
+          <!-- result displayed here -->
+        </div>
+
+      </form>
+
+    </section>
+
+    <section class="bar-graph">
+      <!-- bar graph for calculating bonds -->
+    </section>
+
+    <section class="bar-graph">
+      <!-- bar graph for calculating cash-->
+    </section>
+
   </body>
 
 </html>
