@@ -13,6 +13,7 @@ import { calculateROICashAndBonds } from "./scripts/cashAndBonds"
 import { calculateROIOtherAssets } from "./scripts/otherAssets";
 import { createBarGraph } from './scripts/barGraph';
 import { createCashAndBondsGraph } from "./scripts/cashAndBondsGraph";
+import { createBarGraphOtherAssets } from "./scripts/barGraphOtherAssets";
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('stocksForm').addEventListener('submit', function (e) {
@@ -65,23 +66,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("altAssetsForm").addEventListener("submit", function (e) {
+    document.getElementById("otherAssetsForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // Get input values from the form
+        // Get input values from the form for otherAssets
         const initialDeposit3 = parseFloat(document.getElementById("initialDeposit3").value);
         const yearlyDeposit3 = parseFloat(document.getElementById("yearlyDeposit3").value);
         const desiredReturns3 = parseFloat(document.getElementById("desiredReturns3").value);
         const yearsInvested3 = parseFloat(document.getElementById("yearsInvested3").value);
-    
-        // Calculate ROI
-        const { roi3, yearsInvested3: calculatedYears3 } = calculateROIOtherAssets(initialDeposit3, yearlyDeposit3, desiredReturns3, yearsInvested3);
-    
+
+        // Calculate ROI for otherAssets
+        const roiData3 = calculateROIOtherAssets(initialDeposit3, yearlyDeposit3, desiredReturns3, yearsInvested3);
+
         // Display the result
         const resultElement3 = document.getElementById("resultForAltAssets");
-        resultElement3.innerHTML = `<p>Your Return On Investment (ROI) is ${roi3} over ${calculatedYears3} years.</p>`;
-    })
-})
+        resultElement3.innerHTML = `<p>Your Return On Investment (ROI) is ${roiData3.roi} over ${roiData3.yearsInvested} years.</p>`;
+
+        // Create the graph using the new canvas ID
+        const canvas3 = document.getElementById('barChartCanvas3');
+        createBarGraphOtherAssets(canvas3, roiData3);
+    });
+});
+
+
 
 
 
