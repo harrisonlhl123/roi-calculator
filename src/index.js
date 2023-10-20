@@ -76,3 +76,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+import { createBarGraph } from "./scripts/barGraph"
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Your JavaScript code here
+
+  // Sample data for the bar graph
+  const data = [
+    { year: 1, value: 1000 },
+    { year: 2, value: 1500 },
+    // Add more data points...
+  ];
+
+  // Container element ID for the bar graph
+  const containerId = "barGraph";
+
+  // Create the bar graph
+  createBarGraph(data, containerId);
+});
+
+
+
+
