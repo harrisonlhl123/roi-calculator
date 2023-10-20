@@ -12,6 +12,7 @@ import { calculateROI } from "./scripts/stocks"
 import { calculateROICashAndBonds } from "./scripts/cashAndBonds"
 import { calculateROIOtherAssets } from "./scripts/otherAssets";
 import { createBarGraph } from './scripts/barGraph';
+import { createCashAndBondsGraph } from "./scripts/cashAndBondsGraph";
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('stocksForm').addEventListener('submit', function (e) {
@@ -39,24 +40,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Your JavaScript code here
     document.getElementById("cashAndBondsForm").addEventListener("submit", function (e) {
         e.preventDefault();
-    
-        // Get input values from the form
+
+        // Get input values from the form for cash and bonds
         const initialDeposit2 = parseFloat(document.getElementById("initialDeposit2").value);
         const yearlyDeposit2 = parseFloat(document.getElementById("yearlyDeposit2").value);
         const desiredReturns2 = parseFloat(document.getElementById("desiredReturns2").value);
         const yearsInvested2 = parseFloat(document.getElementById("yearsInvested2").value);
-    
-        // Calculate ROI
-        const { roi2, yearsInvested2: calculatedYears2 } = calculateROICashAndBonds(initialDeposit2, yearlyDeposit2, desiredReturns2, yearsInvested2);
-    
+
+        // Calculate ROI for cash and bonds
+        const roiData2 = calculateROICashAndBonds(initialDeposit2, yearlyDeposit2, desiredReturns2, yearsInvested2);
+
         // Display the result
         const resultElement2 = document.getElementById("resultForCashAndBonds");
-        resultElement2.innerHTML = `<p>Your Return On Investment (ROI) is ${roi2} over ${calculatedYears2} years.</p>`;
+        resultElement2.innerHTML = `<p>Your Return On Investment (ROI) is ${roiData2.roi2} over ${yearsInvested2} years.</p>`;
+
+        // Create the graph using the new canvas ID
+        const canvas2 = document.getElementById('barChartCanvas2');
+        createCashAndBondsGraph(canvas2, roiData2);
     });
 });
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("altAssetsForm").addEventListener("submit", function (e) {
