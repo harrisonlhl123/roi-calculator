@@ -77,23 +77,121 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-import { createBarGraph } from "./scripts/barGraph"
+// index.js
+
+// import { createBarGraph } from "./scripts/barGraph"
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   // Your JavaScript code here
+
+//   // Sample data for the bar graph
+//   const data = [
+//     { year: 1, value: 1000 },
+//     { year: 2, value: 1500 },
+//     // Add more data points...
+//   ];
+
+//   // Container element ID for the bar graph
+//   const containerId = 'barGraph';
+
+//   // Create the bar graph
+//   createBarGraph(data, containerId);
+// });
+
+
+
+
+
+// import { calculateROI } from "./scripts/stocks";
+// import { createBarGraph, updateBarGraph } from "./scripts/barGraph"; // Import the new graph functions
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     // Your JavaScript code here
+
+//     const form = document.getElementById("stocksForm");
+//     const initialDepositInput = document.getElementById("initialDeposit");
+//     const yearlyDepositInput = document.getElementById("yearlyDeposit");
+//     const desiredReturnsInput = document.getElementById("desiredReturns");
+//     const yearsInvestedInput = document.getElementById("yearsInvested");
+//     const resultElement = document.getElementById("resultForStocks");
+
+//     // Initialize the bar graph with empty data
+//     const chart = createBarGraph("barGraph", [], []);
+
+//     form.addEventListener("submit", function (e) {
+//         e.preventDefault();
+
+//         // Get input values from the form
+//         const initialDeposit = parseFloat(initialDepositInput.value);
+//         const yearlyDeposit = parseFloat(yearlyDepositInput.value);
+//         const desiredReturns = parseFloat(desiredReturnsInput.value);
+//         const yearsInvested = parseFloat(yearsInvestedInput.value);
+
+//         // Calculate ROI
+//         const roiData = [];
+//         for (let year = 1; year <= yearsInvested; year++) {
+//             const roi = calculateROI(initialDeposit, yearlyDeposit, desiredReturns, year).roi;
+//             roiData.push(roi);
+//         }
+
+//         // Update the bar graph with new data
+//         updateBarGraph(chart, roiData, Array.from({ length: yearsInvested }, (_, i) => i + 1));
+
+//         // Display the result
+//         resultElement.innerHTML = `<p>Your Return On Investment (ROI) is ${roiData[roiData.length - 1]} over ${yearsInvested} years.</p>`;
+//     });
+// });
+
+
+// import Chart from "chart.js";
+import { Chart } from 'chart.js/auto';
+
+// import { calculateROI } from "./scripts/stocks";
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Your JavaScript code here
+    const form = document.getElementById("stocksForm");
+    const canvas = document.getElementById("roiChart");
 
-  // Sample data for the bar graph
-  const data = [
-    { year: 1, value: 1000 },
-    { year: 2, value: 1500 },
-    // Add more data points...
-  ];
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-  // Container element ID for the bar graph
-  const containerId = "barGraph";
+        // Get input values from the form
+        const initialDeposit = parseFloat(document.getElementById("initialDeposit").value);
+        const yearlyDeposit = parseFloat(document.getElementById("yearlyDeposit").value);
+        const desiredReturns = parseFloat(document.getElementById("desiredReturns").value);
+        const yearsInvested = parseFloat(document.getElementById("yearsInvested").value);
 
-  // Create the bar graph
-  createBarGraph(data, containerId);
+        // Calculate ROI
+        const { roi, yearsInvested: calculatedYears } = calculateROI(initialDeposit, yearlyDeposit, desiredReturns, yearsInvested);
+
+        // Create a chart
+        new Chart(canvas, {
+            type: "bar", // Bar chart type
+            data: {
+                labels: ["ROI"],
+                datasets: [
+                    {
+                        label: "Return On Investment",
+                        data: [roi],
+                        backgroundColor: "rgba(75, 192, 192, 0.2)", // Adjust colors as needed
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+
+        // Display the result
+        const resultElement = document.getElementById("resultForStocks");
+        resultElement.innerHTML = `<p>Your Return On Investment (ROI) is ${roi} over ${calculatedYears} years.</p>`;
+    });
 });
 
 

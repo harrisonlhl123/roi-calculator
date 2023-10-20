@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
 
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- for graphs -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 
     <title>ROI Calculator</title>
   </head>
@@ -48,11 +52,11 @@
         <br>
         <input type="submit" value="Calculate Your Returns">
 
-        <div id="resultForStocks">
-          <!-- result displayed here -->
-        </div>
-
       </form>
+
+      <div id="resultForStocks">
+        <!-- result displayed here -->
+      </div>
 
     </section>
 
@@ -80,11 +84,12 @@
         <br>
         <input type="submit" value="Calculate Your Returns">
 
-        <div id="resultForCashAndBonds">
-          <!-- result displayed here -->
-        </div>
-
       </form>
+
+      <div id="resultForCashAndBonds">
+        <!-- result displayed here -->
+      </div>
+
     </section>
 
     <section class="bar-graph">
@@ -110,45 +115,23 @@
         </label>
         <br>
         <input type="submit" value="Calculate Your Returns">
-
-        <div id="resultForAltAssets">
-          <!-- result displayed here -->
-        </div>
         
       </form>
+
+      <div id="resultForAltAssets">
+        <!-- result displayed here -->
+      </div>
+
     </section>
 
-    <div id="barGraph"></div>
 
 
-    <!-- <div>
-      <canvas id="myChart"></canvas>
-    </div>
+    <!-- for graphs -->
+    <!-- <canvas id="barGraph"></canvas> -->
+    <canvas id="roiChart"></canvas>
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <script>
-      const ctx = document.getElementById('myChart');
-    
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    </script> -->
+
+
 
   </body>
 
