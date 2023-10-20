@@ -23,9 +23,9 @@
 
     <section class="bar-graph">
       <!-- bar graph for calculating stocks -->
-      <h3>Let's calculate your potential return!</h3>
+      <h3>Let's calculate your potential return for stocks!</h3>
 
-      <form id="roiForm">
+      <form id="stocksForm">
 
         <label>Initial Deposit:
           <input type="number" id="initialDeposit" required>
@@ -55,10 +55,64 @@
 
     <section class="bar-graph">
       <!-- bar graph for calculating bonds -->
+      <h3>Let's calculate your potential return for cash and bonds</h3>
+
+      <form id="cashAndBondsForm">
+
+        <label>Initial Deposit:
+          <input type="number" id="initialDeposit2" required>
+        </label>
+        <br>
+        <label>Yearly Deposit:
+          <input type="number" id="yearlyDeposit2" required>
+        </label>
+        <br>
+        <label>Desired Returns(%):
+          <input type="number" id="desiredReturns2" required>
+        </label>
+        <br>
+        <label>Years Invested:
+          <input type="number" id="yearsInvested2" required>
+        </label>
+        <br>
+        <input type="submit" value="Calculate Your Returns">
+
+        <div id="resultForCashAndBonds">
+          <!-- result displayed here -->
+        </div>
+
+      </form>
     </section>
 
     <section class="bar-graph">
       <!-- bar graph for calculating cash-->
+      <h3>Let's calculate your potential return for alternative assets!</h3>
+
+      <form id="altAssetsForm">
+        
+        <label>Initial Deposit:
+          <input type="number" id="initialDeposit3" required>
+        </label>
+        <br>
+        <label>Yearly Deposit
+          <input type="number" id="yearlyDeposit3" required>
+        </label>
+        <br>
+        <label>Desired Returns(%):
+          <input type="number" id="desiredReturns3" required>
+        </label>
+        <br>
+        <label>Years Invested:
+          <input type="number" id="yearsInvested3" required>
+        </label>
+        <br>
+        <input type="submit" value="Calculate Your Returns">
+
+        <div id="resultForAltAssets">
+          <!-- result displayed here -->
+        </div>
+        
+      </form>
     </section>
 
   </body>
