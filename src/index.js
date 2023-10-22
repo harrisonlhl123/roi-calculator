@@ -14,6 +14,8 @@ import { createBarGraph } from './scripts/barGraph';
 import { createCashAndBondsGraph } from "./scripts/cashAndBondsGraph";
 import { createBarGraphOtherAssets } from "./scripts/barGraphOtherAssets";
 import { createPieChart } from "./scripts/pieChart";
+import { createPortfolioPieChart } from "./scripts/portfolioPieChart";
+import { calculatePortfolioData } from "./scripts/calculatePortfolioData";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -91,10 +93,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById('totalDeposits').textContent = `Total Deposits: $${totalDeposits.toFixed(2)}`;
         document.getElementById('totalInterest').textContent = `Total Interest Earned: $${totalInterestEarned.toFixed(2)}`;
-        document.getElementById('finalBalance').textContent = `Final Balance: $${finalBalance}`;
+        document.getElementById('finalBalance').textContent = `Final Balance: $${finalBalance.toFixed(2)}`;
 
         const canvas4 = 'pieChartCanvas'; // Change to your actual canvas ID
         createPieChart(totalDeposits, totalInterestEarned, canvas4);
+
+        const canvas5 = document.getElementById('portfolioPieChart');
+        const portfolioData = calculatePortfolioData(roiData.roi, roiData2.roi2, roiData3.roi);
+        createPortfolioPieChart(portfolioData, canvas5);
 
     });
 });
