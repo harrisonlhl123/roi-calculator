@@ -13,6 +13,7 @@ import { calculateROIOtherAssets } from "./scripts/otherAssets";
 import { createBarGraph } from './scripts/barGraph';
 import { createCashAndBondsGraph } from "./scripts/cashAndBondsGraph";
 import { createBarGraphOtherAssets } from "./scripts/barGraphOtherAssets";
+import { createPieChart } from "./scripts/pieChart";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -91,6 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('totalDeposits').textContent = `Total Deposits: $${totalDeposits.toFixed(2)}`;
         document.getElementById('totalInterest').textContent = `Total Interest Earned: $${totalInterestEarned.toFixed(2)}`;
         document.getElementById('finalBalance').textContent = `Final Balance: $${finalBalance}`;
+
+        const canvas4 = 'pieChartCanvas'; // Change to your actual canvas ID
+        createPieChart(totalDeposits, totalInterestEarned, canvas4);
+
     });
 });
 
