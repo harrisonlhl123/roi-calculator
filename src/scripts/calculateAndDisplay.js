@@ -9,6 +9,11 @@ import { createPortfolioPieChart } from "./portfolioPieChart";
 import { calculatePortfolioData } from "./calculatePortfolioData";
 
 export function calculateAndDisplayResults() {
+    // Step 1: Reset Total Values
+    let totalDeposits = 0;
+    let totalInterestEarned = 0;
+
+    // Step 2: Calculate ROI and Update Total Values
     // Calculate and display results for stocks
     const initialDeposit = parseFloat(document.getElementById('initialDeposit').value);
     const yearlyDeposit = parseFloat(document.getElementById('yearlyDeposit').value);
@@ -42,14 +47,14 @@ export function calculateAndDisplayResults() {
     const canvas3 = 'barChartCanvas3'; // Replace with your actual canvas ID
     createBarGraphOtherAssets(canvas3, roiData3);
 
-    // Calculate the total deposits and interest earned
-    const totalDeposits = initialDeposit + initialDeposit2 + initialDeposit3 + 
-                          (yearlyDeposit * yearsInvested) + (yearlyDeposit2 * yearsInvested2) + (yearlyDeposit3 * yearsInvested3);
-    const totalInterestEarned = roiData.roi - (initialDeposit + yearlyDeposit * yearsInvested) + 
-                               roiData2.roi2 - (initialDeposit2 + yearlyDeposit2 * yearsInvested2) + 
-                               roiData3.roi - (initialDeposit3 + yearlyDeposit3 * yearsInvested3);
+    // Update Total Deposits and Total Interest Earned
+    totalDeposits += initialDeposit + initialDeposit2 + initialDeposit3 +
+                    (yearlyDeposit * yearsInvested) + (yearlyDeposit2 * yearsInvested2) + (yearlyDeposit3 * yearsInvested3);
+    totalInterestEarned += roiData.roi - (initialDeposit + yearlyDeposit * yearsInvested) +
+                         roiData2.roi2 - (initialDeposit2 + yearlyDeposit2 * yearsInvested2) +
+                         roiData3.roi - (initialDeposit3 + yearlyDeposit3 * yearsInvested3);
 
-    // Calculate the final balance
+    // Step 3: Update Final Balance
     const finalBalance = totalDeposits + totalInterestEarned;
 
     // Display total deposits, total interest earned, and final balance
@@ -64,3 +69,4 @@ export function calculateAndDisplayResults() {
     const portfolioData = calculatePortfolioData(roiData.roi, roiData2.roi2, roiData3.roi);
     createPortfolioPieChart(portfolioData, canvas5);
 }
+
