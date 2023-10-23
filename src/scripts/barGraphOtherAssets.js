@@ -9,7 +9,7 @@ export function createBarGraphOtherAssets(canvasId, roiData) {
         canvas.chart.destroy(); // Destroy the previous chart if it exists
     }
 
-    new Chart(canvas, {
+    canvas.chart = new Chart(canvas, {
         type: 'bar',
         data: {
             labels: roiData.years,
