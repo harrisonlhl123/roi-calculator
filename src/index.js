@@ -16,8 +16,13 @@ import { createBarGraphOtherAssets } from "./scripts/barGraphOtherAssets";
 import { createPieChart } from "./scripts/pieChart";
 import { createPortfolioPieChart } from "./scripts/portfolioPieChart";
 import { calculatePortfolioData } from "./scripts/calculatePortfolioData";
+import { populateDefaultValues } from "./scripts/defaultValues";
+import { calculateAndDisplayResults } from "./scripts/calculateAndDisplay";
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    populateDefaultValues();
+    calculateAndDisplayResults();
 
     let totalDeposits = 0;
     let totalInterestEarned = 0;
