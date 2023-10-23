@@ -1,14 +1,5 @@
-// should be minimal. Creates instances of your project.
-
-// import Example from "./scripts/example";
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     const main = document.getElementById("main");
-//     new Example(main);
-// })
-
-import { calculateROI } from "./scripts/stocks"
-import { calculateROICashAndBonds } from "./scripts/cashAndBonds"
+import { calculateROI } from "./scripts/stocks";
+import { calculateROICashAndBonds } from "./scripts/cashAndBonds";
 import { calculateROIOtherAssets } from "./scripts/otherAssets";
 import { createBarGraph } from './scripts/barGraph';
 import { createCashAndBondsGraph } from "./scripts/cashAndBondsGraph";
@@ -20,7 +11,6 @@ import { populateDefaultValues } from "./scripts/defaultValues";
 import { calculateAndDisplayResults } from "./scripts/calculateAndDisplay";
 
 document.addEventListener("DOMContentLoaded", function () {
-
     populateDefaultValues();
     calculateAndDisplayResults();
 
@@ -46,12 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
         resultElement.innerHTML = `<p>Your Return On Investment (ROI) for stocks is ${roiData.roi} over ${yearsInvested} years.</p>`;
 
         // Create a bar graph for stocks
-        const canvas = document.getElementById('barChartCanvas');
-        createBarGraph(canvas, roiData);
+        createBarGraph('barChartCanvas', roiData); // Updated canvas ID
 
         totalDeposits += initialDeposit + (yearlyDeposit * yearsInvested);
         totalInterestEarned += roiData.roi - (initialDeposit + yearlyDeposit * yearsInvested);
-
 
         // Get input values from the form for cash and bonds
         const initialDeposit2 = parseFloat(document.getElementById("initialDeposit2").value);
@@ -67,12 +55,10 @@ document.addEventListener("DOMContentLoaded", function () {
         resultElement2.innerHTML = `<p>Your Return On Investment (ROI) for cash and bonds is ${roiData2.roi2} over ${yearsInvested2} years.</p>`;
 
         // Create a graph for cash and bonds using the new canvas ID
-        const canvas2 = document.getElementById('barChartCanvas2');
-        createCashAndBondsGraph(canvas2, roiData2);
+        createCashAndBondsGraph('barChartCanvas2', roiData2); // Updated canvas ID
 
         totalDeposits += initialDeposit2 + (yearlyDeposit2 * yearsInvested2);
         totalInterestEarned += roiData2.roi2 - (initialDeposit2 + yearlyDeposit2 * yearsInvested2);
-
 
         // Get input values from the form for other assets
         const initialDeposit3 = parseFloat(document.getElementById("initialDeposit3").value);
@@ -88,30 +74,23 @@ document.addEventListener("DOMContentLoaded", function () {
         resultElement3.innerHTML = `<p>Your Return On Investment (ROI) for other assets is ${roiData3.roi} over ${roiData3.yearsInvested} years.</p>`;
 
         // Create a graph for other assets using the new canvas ID
-        const canvas3 = document.getElementById('barChartCanvas3');
-        createBarGraphOtherAssets(canvas3, roiData3);
+        createBarGraphOtherAssets('barChartCanvas3', roiData3); // Updated canvas ID
 
         totalDeposits += initialDeposit3 + (yearlyDeposit3 * yearsInvested3);
         totalInterestEarned += roiData3.roi - (initialDeposit3 + yearlyDeposit3 * yearsInvested3);
         finalBalance = totalDeposits + totalInterestEarned;
 
-
         document.getElementById('totalDeposits').textContent = `Total Deposits: $${totalDeposits.toFixed(2)}`;
         document.getElementById('totalInterest').textContent = `Total Interest Earned: $${totalInterestEarned.toFixed(2)}`;
         document.getElementById('finalBalance').textContent = `Final Balance: $${finalBalance.toFixed(2)}`;
 
-        const canvas4 = 'pieChartCanvas'; // Change to your actual canvas ID
+        const canvas4 = document.getElementById('pieChartCanvas'); // Change to your actual canvas ID
         createPieChart(totalDeposits, totalInterestEarned, canvas4);
 
         const canvas5 = document.getElementById('portfolioPieChart');
         const portfolioData = calculatePortfolioData(roiData.roi, roiData2.roi2, roiData3.roi);
         createPortfolioPieChart(portfolioData, canvas5);
-
     });
 });
-
-
-
-
 
 

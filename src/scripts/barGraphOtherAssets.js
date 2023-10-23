@@ -1,6 +1,14 @@
 import { Chart } from 'chart.js/auto';
 
-export function createBarGraphOtherAssets(canvas, roiData) {
+
+export function createBarGraphOtherAssets(canvasId, roiData) {
+    const canvas = document.getElementById(canvasId);
+
+    // Check if the canvas already has a chart instance
+    if (canvas.chart) {
+        canvas.chart.destroy(); // Destroy the previous chart if it exists
+    }
+
     new Chart(canvas, {
         type: 'bar',
         data: {
