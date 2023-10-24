@@ -154,3 +154,9 @@ body {
 #calculateReturnsButton:hover {
   background-color: #0056b3;
 }
+
+input {
+  background-color: #1a244d;
+  color: white;
+  border: 1px solid gold;
+}
