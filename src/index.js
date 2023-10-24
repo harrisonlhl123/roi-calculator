@@ -10,6 +10,7 @@ import { calculatePortfolioData } from "./scripts/calculatePortfolioData";
 import { populateDefaultValues } from "./scripts/defaultValues";
 import { calculateAndDisplayResults } from "./scripts/calculateAndDisplay";
 
+
 document.addEventListener("DOMContentLoaded", function () {
     populateDefaultValues();
     calculateAndDisplayResults();
@@ -122,6 +123,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const portfolioData = calculatePortfolioData(roiData.roi, roiData2.roi2, roiData3.roi);
         createPortfolioPieChart(portfolioData, portfolioPieChartCanvas);
     });
+
+
+    const instructionsLink = document.getElementById("instructions-link");
+    const instructionsPopup = document.getElementById("instructions-popup");
+    
+    instructionsLink.addEventListener("click", function() {
+        if (instructionsPopup.style.display === "block") {
+            instructionsPopup.style.display = "none";
+        } else {
+            instructionsPopup.style.display = "block";
+        }
+    });
+    
 
 });
 
