@@ -57,107 +57,95 @@
   
   
 
-    <section class="bar-graph">
-      <!-- bar graph for calculating stocks -->
-      <h3>Let's calculate your potential return for stocks!</h3>
+    <section class="bar-graph-container">
+      <div class="bar-graph">
+          <!-- Bar graph content for stocks -->
+          <h3>Let's calculate your potential return for stocks!</h3>
+          <form id="stocksForm">
+              <label>Initial Deposit:
+                  <input type="number" id="initialDeposit" required>
+              </label>
+              <br>
+              <label>Yearly Deposit:
+                  <input type="number" id="yearlyDeposit" required>
+              </label>
+              <br>
+              <label>Desired Returns(%):
+                  <input type="number" id="desiredReturns" required>
+              </label>
+              <br>
+              <label>Years Invested:
+                  <input type="number" id="yearsInvested" required>
+              </label>
+              <br>
+          </form>
+          <div id="resultForStocks">
+              <!-- Result for stocks -->
+          </div>
+          <canvas id="barChartCanvas" width="400" height="400"></canvas>
+      </div>
+  
+      <div class="bar-graph">
+          <!-- Bar graph content for cash and bonds -->
+          <h3>Let's calculate your potential return for cash and bonds</h3>
+          <form id="cashAndBondsForm">
+              <label>Initial Deposit:
+                  <input type="number" id="initialDeposit2" required>
+              </label>
+              <br>
+              <label>Yearly Deposit:
+                  <input type="number" id="yearlyDeposit2" required>
+              </label>
+              <br>
+              <label>Desired Returns(%):
+                  <input type="number" id="desiredReturns2" required>
+              </label>
+              <br>
+              <label>Years Invested:
+                  <input type="number" id="yearsInvested2" required>
+              </label>
+              <br>
+          </form>
 
-      <form id="stocksForm">
-
-        <label>Initial Deposit:
-          <input type="number" id="initialDeposit" required>
-        </label>
-        <br>
-        <label>Yearly Deposit:
-          <input type="number" id="yearlyDeposit" required>
-        </label>
-        <br>
-        <label>Desired Returns(%):
-          <input type="number" id="desiredReturns" required>
-        </label>
-        <br>
-        <label>Years Invested:
-          <input type="number" id="yearsInvested" required>
-        </label>
-        <br>
-
-      </form>
-
-      <div id="resultForStocks">
-        <!-- result displayed here -->
+          
+          <div id="resultForCashAndBonds">
+              <!-- Result for cash and bonds -->
+          </div>
+          <canvas id="barChartCanvas2" width="400" height="400"></canvas>
+      </div>
+  
+      <div class="bar-graph">
+          <!-- Bar graph content for other assets -->
+          <h3>Let's calculate your potential return for alternative assets!</h3>
+          <form id="otherAssetsForm">
+              <label>Initial Deposit:
+                  <input type="number" id="initialDeposit3" required>
+              </label>
+              <br>
+              <label>Yearly Deposit:
+                  <input type="number" id="yearlyDeposit3" required>
+              </label>
+              <br>
+              <label>Desired Returns(%):
+                  <input type="number" id="desiredReturns3" required>
+              </label>
+              <br>
+              <label>Years Invested:
+                  <input type="number" id="yearsInvested3" required>
+              </label>
+              <br>
+          </form>
+          <div id="resultForAltAssets">
+              <!-- Result for alternative assets -->
+          </div>
+          <canvas id="barChartCanvas3" width="400" height="400"></canvas>
       </div>
 
-      <!-- for graphs -->
-      <canvas id="barChartCanvas" width="400" height="400"></canvas>
-
+      <section class="calculate-button">
+        <button id="calculateReturnsButton">Calculate Returns</button>
+      </section>
+      
     </section>
-
-    <section class="bar-graph">
-      <!-- bar graph for calculating bonds -->
-      <h3>Let's calculate your potential return for cash and bonds</h3>
-
-      <form id="cashAndBondsForm">
-
-        <label>Initial Deposit:
-          <input type="number" id="initialDeposit2" required>
-        </label>
-        <br>
-        <label>Yearly Deposit:
-          <input type="number" id="yearlyDeposit2" required>
-        </label>
-        <br>
-        <label>Desired Returns(%):
-          <input type="number" id="desiredReturns2" required>
-        </label>
-        <br>
-        <label>Years Invested:
-          <input type="number" id="yearsInvested2" required>
-        </label>
-        <br>
-
-      </form>
-
-      <div id="resultForCashAndBonds">
-        <!-- result displayed here -->
-      </div>
-
-      <canvas id="barChartCanvas2" width="400" height="400"></canvas>
-
-    </section>
-
-    <section class="bar-graph">
-      <!-- bar graph for calculating cash-->
-      <h3>Let's calculate your potential return for alternative assets!</h3>
-
-      <form id="otherAssetsForm">
-        
-        <label>Initial Deposit:
-          <input type="number" id="initialDeposit3" required>
-        </label>
-        <br>
-        <label>Yearly Deposit
-          <input type="number" id="yearlyDeposit3" required>
-        </label>
-        <br>
-        <label>Desired Returns(%):
-          <input type="number" id="desiredReturns3" required>
-        </label>
-        <br>
-        <label>Years Invested:
-          <input type="number" id="yearsInvested3" required>
-        </label>
-        <br>
-        
-      </form>
-
-      <div id="resultForAltAssets">
-        <!-- result displayed here -->
-      </div>
-
-      <canvas id="barChartCanvas3" width="400" height="400"></canvas>
-
-    </section>
-
-    <button id="calculateReturnsButton">Calculate Returns</button>
 
   </body>
 
