@@ -125,15 +125,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    const instructionsLink = document.getElementById("instructions-link");
-    const instructionsPopup = document.getElementById("instructions-popup");
-    
-    instructionsLink.addEventListener("click", function() {
-        if (instructionsPopup.style.display === "block") {
-            instructionsPopup.style.display = "none";
-        } else {
-            instructionsPopup.style.display = "block";
-        }
+    document.getElementById("instructions-link").addEventListener("click", function() {
+        const instructionsPopup = document.getElementById("instructions-popup");
+        instructionsPopup.style.display = "block";
+    });
+      
+    document.getElementById("close-instructions-popup").addEventListener("click", function() {
+        const instructionsPopup = document.getElementById("instructions-popup");
+        instructionsPopup.style.display = "none";
     });
     
 
