@@ -1,10 +1,16 @@
-// portfolioPieChart.js
 import { Chart } from 'chart.js';
 
+let portfolioPieChart = null; // Define a variable to store the portfolio pie chart instance
+
 export function createPortfolioPieChart(data, canvasElement) {
+    // Destroy the previous portfolio pie chart if it exists
+    if (portfolioPieChart) {
+        portfolioPieChart.destroy();
+    }
+
     const ctx = canvasElement.getContext('2d');
 
-    new Chart(ctx, {
+    portfolioPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: ['Stocks', 'Cash & Bonds', 'Alt Assets'],
@@ -22,3 +28,4 @@ export function createPortfolioPieChart(data, canvasElement) {
         },
     });
 }
+
