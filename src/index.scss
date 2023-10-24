@@ -32,3 +32,30 @@
 .navbar li a:hover {
     background-color: #555;
 }
+
+/* Add this to your main.css file or in a <style> tag in your HTML */
+.results-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pie-chart {
+    width: 50%;
+}
+
+.text-results {
+    width: 45%; /* Adjust this width to your preference */
+    text-align: center; /* Align text to the right */
+    padding: 20px; /* Add some padding to give it space and style */
+    border: 1px solid #ccc; /* Add a border for separation and style */
+    background-color: #f9f9f9; /* Set a background color to differentiate from the charts */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow for depth */
+}
+
+
+.pie-chart canvas {
+    width: 50%;
+    height: 50%;
+    max-width: 400px; /* Set a maximum width if needed */
+    max-height: 400px; /* Set a maximum height if needed */
+}

@@ -33,28 +33,29 @@
             <li>Press "Calculate Returns" to see your potential returns and other metrics.</li>
           </ol>
       </div>
-   </div>
+    </div>
    
   
+    <div class="results-container">
+      <section class="pie-chart">
+          <!-- pie chart breaking down deposits and interests earned -->
+          <canvas id="pieChartCanvas"></canvas>
+      </section>
+
+      <section class="pie-chart">
+          <!-- pie chart breaking down asset allocation -->
+          <canvas id="portfolioPieChart"></canvas>
+      </section>
+
+      <div class="text-results">
+          <div id="finalBalance">Final Balance: $0</div>
+          <div id="totalDeposits">Total Deposits: $0</div>
+          <div id="totalInterest">Total Interest Earned: $0</div>
+      </div>
+    </div>
+
   
-
-    <div id="finalBalance">Final Balance: $0</div>
-    <br>
-    <div id="totalDeposits">Total Deposits: $0</div>
-    <br>
-    <div id="totalInterest">Total Interest Earned: $0</div>
-
-    
-    
-    <section id="deposits-interests" class="pie-chart">
-      <!-- pie chart breaking down deposits and interests earned -->
-      <canvas id="pieChartCanvas" width="400" height="400"></canvas>
-    </section>
-    
-    <section id="asset-allocation" class="pie-chart">
-      <!-- pie chart breaking down asset allocation -->
-      <canvas id="portfolioPieChart" width="400" height="400"></canvas>
-    </section>
+  
 
     <section class="bar-graph">
       <!-- bar graph for calculating stocks -->
