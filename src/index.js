@@ -9,11 +9,7 @@ import { createPortfolioPieChart } from "./scripts/portfolioPieChart";
 import { calculatePortfolioData } from "./scripts/calculatePortfolioData";
 import { populateDefaultValues } from "./scripts/defaultValues";
 import { calculateAndDisplayResults } from "./scripts/calculateAndDisplay";
-
-
 import { displayStockList } from "./scripts/watchlist";
-
-import { fetchAndDisplayStockData, fetchStockData } from "./scripts/alphaVantageAPI";
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -138,26 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("close-instructions-popup").addEventListener("click", function() {
         const instructionsPopup = document.getElementById("instructions-popup");
         instructionsPopup.style.display = "none";
-    });
-
-
-
-
-
-
-    document.getElementById('fetchStockDataButton').addEventListener('click', async function (e) {
-        e.preventDefault();
-      
-        const action = e.target.getAttribute('data-action');
-        if (action === 'addStock') {
-          const stockTickerInput = document.getElementById('stockTickerInput');
-          const stockSymbol = stockTickerInput.value.trim().toUpperCase();
-          if (stockSymbol) {
-            // Call the function to fetch and display stock data for the user-provided symbol
-            await fetchAndDisplayStockData(fetchStockData, stockSymbol);
-            stockTickerInput.value = ''; // Clear the input field
-          }
-        }
     });
       
 
