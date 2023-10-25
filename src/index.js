@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    
+
 
     document.getElementById('fetchStockDataButton').addEventListener('click', async function (e) {
         e.preventDefault();

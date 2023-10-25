@@ -1,31 +1,48 @@
 // Function to fetch stock data for a single symbol
 async function fetchStockData(symbol) {
     try {
-      const response = await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&apikey=M7KM343LPLRA5F7T`); // Replace with your API endpoint
-      const data = await response.json();
-      const price = data['Global Quote']['05. price'];
-      return { symbol, price: parseFloat(price) };
+        // Replace 'YOUR_API_KEY' with your actual MarketStack API key
+        const apiKey = '29f060f4bbd7afdf7eab21fb87c04bdc';
+
+        // Set the 'Https' option to false to make an HTTP request
+        const options = { ApiToken: apiKey, Https: false };
+
+        const response = await fetch(`http://api.marketstack.com/v1/eod?access_key=${apiKey}&symbols=${symbol}`, options);
+
+        const data = await response.json();
+
+        // Check if there was an error in the response
+        if (response.status !== 200) {
+            throw new Error(`Error fetching data for ${symbol}: ${data.error.message}`);
+        }
+
+        // Extract the price from the response
+        const stockData = data.data[0]; // Assuming you want the latest data
+        const price = stockData.close;
+
+        return { symbol, price };
     } catch (error) {
-      console.error(`Error fetching data for ${symbol}:`, error);
-      return null; // Return null in case of an error
+        console.error(`Error fetching data for ${symbol}:`, error);
+        return null; // Return null in case of an error
     }
-  }
-  
-  // Function to fetch and display stock data for a list of symbols
-  async function fetchAndDisplayStockData(stockSymbols) {
+}
+
+async function fetchAndDisplayStockData(fetchStockDataFunction) {
+    // Your list of stock symbols
+    const stockSymbols = ["AAPL", "GOOGL", "AMZN", "MSFT", "TSLA", "FB", "NVDA", "ADBE", "NFLX", "PYPL"];
+
     const stockDataContainer = document.getElementById('watchlist-container');
-  
+
     for (const symbol of stockSymbols) {
-      const stockData = await fetchStockData(symbol);
-  
-      if (stockData) {
-        const stockDiv = document.createElement('div');
-        stockDiv.textContent = `${stockData.symbol}: $${stockData.price.toFixed(2)}`;
-        stockDataContainer.appendChild(stockDiv);
-      }
+        const stockData = await fetchStockDataFunction(symbol);
+
+        if (stockData) {
+            const stockDiv = document.createElement('div');
+            stockDiv.textContent = `${stockData.symbol}: $${stockData.price}`;
+            stockDataContainer.appendChild(stockDiv);
+        }
     }
-  }
-  
-  // Export the fetchStockData and fetchAndDisplayStockData functions
-  export { fetchStockData, fetchAndDisplayStockData };
-  
+}
+
+export { fetchStockData, fetchAndDisplayStockData };
+
