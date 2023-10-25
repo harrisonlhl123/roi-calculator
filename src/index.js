@@ -13,6 +13,8 @@ import { calculateAndDisplayResults } from "./scripts/calculateAndDisplay";
 
 import { displayStockList } from "./scripts/watchlist";
 
+import { fetchAndDisplayStockData, fetchStockData } from "./scripts/alphaVantageAPI";
+
 
 document.addEventListener("DOMContentLoaded", function () {
     populateDefaultValues();
@@ -137,9 +139,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const instructionsPopup = document.getElementById("instructions-popup");
         instructionsPopup.style.display = "none";
     });
-    
+
+
+
 
     
+
+    document.getElementById('fetchStockDataButton').addEventListener('click', async function (e) {
+        e.preventDefault();
+        // Call the function to fetch and display stock data
+        await fetchAndDisplayStockData(fetchStockData); // Pass the fetchStockData function
+    });
+
     displayStockList();
 });
 
