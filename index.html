@@ -46,23 +46,34 @@
     </div>    
    
   
+
     <div class="results-container">
       <section class="pie-chart">
           <!-- pie chart breaking down deposits and interests earned -->
           <canvas id="pieChartCanvas"></canvas>
       </section>
 
+      <div class="text-results">
+        <div id="finalBalance">Final Balance: $0</div>
+        <br>
+        <div id="totalDeposits">Total Deposits: $0</div>
+        <br>
+        <div id="totalInterest">Total Interest Earned: $0</div>
+      </div>
+
       <section class="pie-chart">
           <!-- pie chart breaking down asset allocation -->
           <canvas id="portfolioPieChart"></canvas>
       </section>
 
-      <div class="text-results">
-          <div id="finalBalance">Final Balance: $0</div>
-          <div id="totalDeposits">Total Deposits: $0</div>
-          <div id="totalInterest">Total Interest Earned: $0</div>
-      </div>
-    </div>
+      <section class="watchlist">
+          <div id="watchlist-container">
+            <h2>Stock Watchlist</h2>
+              <!-- Stock watchlist content will be dynamically generated here -->
+          </div>
+      </section>
+  </div>
+  
 
   
     <section class="calculate-button">

@@ -11,6 +11,9 @@ import { populateDefaultValues } from "./scripts/defaultValues";
 import { calculateAndDisplayResults } from "./scripts/calculateAndDisplay";
 
 
+import { displayStockList } from "./scripts/watchlist";
+
+
 document.addEventListener("DOMContentLoaded", function () {
     populateDefaultValues();
     calculateAndDisplayResults();
@@ -136,6 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
 
+    
+    displayStockList();
 });
 
 
