@@ -147,9 +147,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('fetchStockDataButton').addEventListener('click', async function (e) {
         e.preventDefault();
-        // Call the function to fetch and display stock data
-        await fetchAndDisplayStockData(fetchStockData); // Pass the fetchStockData function
+      
+        const action = e.target.getAttribute('data-action');
+        if (action === 'addStock') {
+          const stockTickerInput = document.getElementById('stockTickerInput');
+          const stockSymbol = stockTickerInput.value.trim().toUpperCase();
+          if (stockSymbol) {
+            // Call the function to fetch and display stock data for the user-provided symbol
+            await fetchAndDisplayStockData(fetchStockData, stockSymbol);
+            stockTickerInput.value = ''; // Clear the input field
+          }
+        }
     });
+      
 
     displayStockList();
 });

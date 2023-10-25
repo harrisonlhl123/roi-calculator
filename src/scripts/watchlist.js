@@ -29,9 +29,34 @@ function displayStockList() {
 
     stockList.forEach((stock) => {
         const stockElement = document.createElement('div');
-        stockElement.textContent = `${stock.symbol}: $${stock.price}`;
         watchlistContainer.appendChild(stockElement);
+
+        // Initialize the text content with the stock info
+        stockElement.textContent = `${stock.symbol}: $${stock.price.toFixed(2)}`;
+        stockElement.style.color = getRandomColor(); // Initialize with a random color
+
+        // Function to get a random color (red or green)
+        function getRandomColor() {
+            return Math.random() < 0.5 ? 'red' : 'green';
+        }
+
+        // Function to simulate price changes
+        function simulatePriceChange() {
+            // Simulate a price change of up to 5% (adjust the factor as needed)
+            const priceChangeFactor = 1 + (Math.random() - 0.5) * 0.1;
+            stock.price *= priceChangeFactor;
+            stockElement.textContent = `${stock.symbol}: $${stock.price.toFixed(2)}`;
+        }
+
+        // Change text color and simulate price change at random intervals
+        setInterval(() => {
+            stockElement.style.color = getRandomColor();
+            simulatePriceChange();
+        }, 10000 + Math.random() * 20000); // Random interval between 3 and 8 seconds
     });
 }
 
 export { displayStockList };
+
+
+
