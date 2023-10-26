@@ -12,6 +12,8 @@ Edge is a return on investment calculator. It takes in three categories of inves
 
 ![plot](./barGraph.gif)
 
+Storing the years and return on investment as arrays allow us to make each individual bar graph.
+
 ```
 // stocks.js
 
@@ -45,6 +47,8 @@ export function calculateROI(initialDeposit, yearlyDeposit, desiredReturns, year
 
 ![plot](./pieChart.gif)
 
+The pie chart is broken down into three categories. We store each category as a variable and use helper functions to make the pie chart.
+
 ```
 // calculateAndDisplay.js
 
@@ -58,6 +62,8 @@ createPortfolioPieChart(portfolioData, canvas5);
 #### Calculations:
 
 ![plot](./balances.png)
+
+Using the return on investment formula, we can calculate the final balance after a certain amount of years. From there, we can also derive the total deposits and total interests.
 
 ```
 // calculateDepositInterest.js
