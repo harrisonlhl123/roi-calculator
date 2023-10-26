@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define chart variables to store chart instances
     let stocksChart, cashAndBondsChart, otherAssetsChart, pieChart;
 
-    // ...
     // Inside the event listener function
     document.getElementById('calculateReturnsButton').addEventListener('click', function (e) {
         e.preventDefault();
