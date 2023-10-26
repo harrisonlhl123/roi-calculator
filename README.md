@@ -1,62 +1,75 @@
-# Background:
+# Edge
 
-The ROI Calculator is a calculator that takes in data and returns the final balance after a certain amount of years. It will take in an initial balance, yearly contributions, expected returns, and years invested. If time allows, I will also increase the complexity by allowing for returns on a combination of cash, bonds, and stocks. Two pie charts will be displayed side by side on the top of the screen. The first pie chart will divide the different types of assets in the portfolio. The second pie chart will show the deposits made by the user and the interest earned from their investments. Underneath those pie charts, there will be three categories for the users to fill out: stocks, bonds, and cash. Within each section, there will be inputs for the user to fill out(initial balance, yearly contributions, expected returns, years invested). After inputting the numbers, the calculator will yield a final balance along with a bar graph to show the investments growth over time.
+### URL: https://harrisonlhl123.github.io/roi-calculator/
 
-# Functionality & MVPs:
+### Description:
 
-## With the ROI Calculator, users will be able to:
-* Input numbers to match their investment goals.
-* Adjust numbers to see how that affects their final balance.
-* See a bar graph that tracks their investment's growth over time.
-* See two pie charts. The first will be an asset allocation breakdown of their portfolio. The second will be their deposits and the interest earned.
+Edge is a return on investment calculator. It takes in three categories of investments: Stocks, Cash and Bonds, and Alternative Assets. Each category has an initial balance, yearly contributions, expected returns, and years invested. From there, it displays a bar graph for each category showing the growth over time. Additionally, there will be two pie charts to show more data about your portfolio.
 
-## In addition, this project will include:
-* Recommened numbers for users who do not know what to put in a category.
-* Prefilled version that represents market average.
+### Features and Implementations:
 
-![plot](./wireframe.png)
+#### Rendering a bar graph:
 
-# Technologies, Libraries, APIs:
+![plot](./barGraph.gif)
 
-## This project will be implemented with the following technologies:
-* D3 for graphs
-* Webpack to bundle JavaScript code
+```
+// stocks.js
 
-## Implementation Timeline:
-* Thursday: This will mostly be a planning day. Research the technologies that I will be using and understand how I will use them. Compile all the links that I will need as potential resources. Make a comprehensive map of what I need to do for this project to run.
-* Friday: Set up the project and use this time to ask questions about implementation. Play with D3 so that I feel comfortable making graphs. Implement my plan and work through the math logic behind this project.
-* Weekend: Code out what I can, and compile a list of questions that I need answered on Monday in order to proceed with the project.
-* Monday: Get answers for parts of the project that I am still unsure about. Work on the fixing those.
-* Tueday: Finish up the project and start styling.
-* Wednesday: Style and add bonus features.
-* Thursday: Go through project to make sure everything is working the way they are supposed to.
+export function calculateROI(initialDeposit, yearlyDeposit, desiredReturns, yearsInvested) {
+    const years = []; // Array to store years
+    const roiValues = []; // Array to store ROI values
 
-# Checklist:
+    for (let year = 1; year <= yearsInvested; year++) {
+        // Calculate ROI for each year
+        const roi = (initialDeposit * Math.pow((1 + desiredReturns/100), year)) +
+                    (yearlyDeposit * (Math.pow((1 + desiredReturns/100), year) - 1) / (desiredReturns/100));
+        
+        // Push the year and ROI value into their respective arrays
+        years.push(year);
+        roiValues.push(parseFloat(roi.toFixed(2)));
+    }
 
-## Live Project:
+    // Last element in roiValues is the overall return
+    const overallROI = roiValues[roiValues.length - 1];
 
-☐ Includes links to your portfolio website, Github, and LinkedIn.
+    return {
+        roi: parseFloat(overallROI.toFixed(2)),
+        yearsInvested: yearsInvested,
+        years: years, // Array of years
+        roiValues: roiValues, // Array of ROI values
+    };
+}
+```
 
-☐ Landing page/modal with obvious, clear instructions.
+#### Rendering a pie chart:
 
-☐ Interactivity of some kind.
+![plot](./pieChart.gif)
 
-☐ Well styled, clean frontend.
+```
+// calculateAndDisplay.js
 
-☐ If it has music, the option to mute or stop it.
+const roiData = calculateROI(initialDeposit, yearlyDeposit, desiredReturns, yearsInvested);
+const roiData2 = calculateROICashAndBonds(initialDeposit2, yearlyDeposit2, desiredReturns2, yearsInvested2);
+const roiData3 = calculateROIOtherAssets(initialDeposit3, yearlyDeposit3, desiredReturns3, yearsInvested3);
+const portfolioData = calculatePortfolioData(roiData.roi, roiData2.roi2, roiData3.roi);
+createPortfolioPieChart(portfolioData, canvas5);
+```
 
-## Production README
+#### Calculations:
 
-☐ Link to live version.
+![plot](./balances.png)
 
-☐ Instructions on how to play/interact with the project.
+```
+// calculateDepositInterest.js
 
-☐ List of technologies / libraries / APIs used.
+const roi = (initialDeposit * Math.pow((1 + desiredReturns/100), year)) +
+                    (yearlyDeposit * (Math.pow((1 + desiredReturns/100), year) - 1) / (desiredReturns/100));
 
-☐ Technical implementation details with (good-looking) code snippets.
+const totalDeposits = initialDeposit + (yearlyDeposit * yearsInvested);
+const totalInterest = roi - totalDeposits;
+```
 
-☐ To-dos / future features.
+### Features in Development:
 
-☐ No .DS_Store files / debuggers / console.logs.
-
-☐ Organized file structure, with /src and /dist directories.
+* Adding stocks to a watchlist with real time data.
+* Updating articles on a daily basis related to the financial world.

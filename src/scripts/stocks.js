@@ -12,7 +12,7 @@ export function calculateROI(initialDeposit, yearlyDeposit, desiredReturns, year
         roiValues.push(parseFloat(roi.toFixed(2)));
     }
 
-    // Calculate the overall ROI for all years and return it
+    // Last element in roiValues is the overall return
     const overallROI = roiValues[roiValues.length - 1];
 
     return {
