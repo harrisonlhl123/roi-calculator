@@ -122,17 +122,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const portfolioPieChartCanvas = document.getElementById('portfolioPieChart');
         const portfolioData = calculatePortfolioData(roiData.roi, roiData2.roi2, roiData3.roi);
         createPortfolioPieChart(portfolioData, portfolioPieChartCanvas);
-    });
 
 
-    document.getElementById("instructions-link").addEventListener("click", function() {
-        const instructionsPopup = document.getElementById("instructions-popup");
-        instructionsPopup.style.display = "block";
+
     });
-      
-    document.getElementById("close-instructions-popup").addEventListener("click", function() {
-        const instructionsPopup = document.getElementById("instructions-popup");
+
+    const instructionsPopup = document.getElementById("instructions-popup");
+
+    // Display instructions popup on page load
+    instructionsPopup.style.display = "block";
+
+    // Event listener for closing instructions popup
+    document.getElementById("close-instructions-popup").addEventListener("click", function () {
         instructionsPopup.style.display = "none";
+    });
+
+    // Event listener for opening instructions popup
+    document.getElementById("instructions-link").addEventListener("click", function () {
+        instructionsPopup.style.display = "block";
     });
       
 
