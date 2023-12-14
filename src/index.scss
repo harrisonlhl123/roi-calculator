@@ -111,8 +111,9 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    max-height: 400px; /* Adjust the max height as needed */
+    height: 400px; /* Adjust the max height as needed */
     overflow-y: auto; /* Enable vertical scroll when content exceeds max height */
+    color: #ffcc57;
 }
 
 /* Add this to your main.css file or in a <style> tag in your HTML */
