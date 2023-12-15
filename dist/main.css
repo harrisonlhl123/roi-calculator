@@ -112,6 +112,9 @@ body {
 
 .watchlist {
   width: 20%;
+  color: #ffcc57;
+  border: 1px solid #ccc;
+  padding-left: 10px;
 }
 
 #watchlist-container {
@@ -125,6 +128,10 @@ body {
   margin-bottom: 20px;
   text-align: center;
   color: #ffcc57;
+}
+
+.watchlist h3 {
+  width: 100%;
 }
 
 .watchlist-item a {
