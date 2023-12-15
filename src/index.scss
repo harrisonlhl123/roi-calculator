@@ -105,15 +105,32 @@ body {
 }
 
 .watchlist {
-    width: 15%;
+    width: 20%;
+}
+
+#watchlist-container {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    height: 400px; /* Adjust the max height as needed */
-    overflow-y: auto; /* Enable vertical scroll when content exceeds max height */
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the gap as needed */
+}
+
+.watchlist-item {
+    width: calc(33.33% - 10px);
+    margin-bottom: 20px;
+    text-align: center;
     color: #ffcc57;
+}
+
+.watchlist-item a {
+    display: block;
+    text-decoration: none;
+    color: #ffcc57;
+}
+
+.watchlist-item img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
 }
 
 /* Add this to your main.css file or in a <style> tag in your HTML */
